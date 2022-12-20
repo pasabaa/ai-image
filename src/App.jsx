@@ -52,7 +52,7 @@ function App() {
       </div>
     </div>
 
-    <div className="text-gray-500 px-16 py-8 mt-auto bottom-0 flex flex-col items-start justify-start bg-gray-100">
+    <div className="text-gray-500 px-16 py-8 mt-auto bottom-0 flex flex-col items-start justify-start bg-gray-100/30">
       <div className="w-8/12 flex justify-between items-center gap-4 mx-auto sm:w-full">
         <div>
           <a target={'_blank'} rel={'noreferrer noopener'} href="https://portfolio-pasabaa.netlify.app/">
@@ -60,7 +60,8 @@ function App() {
           </a>
         </div>
         <div>
-          <div className="text-end mb-2">
+          <div className="text-end flex flex-col items-end gap-2 mb-2">
+            <img src="/favicon/android-chrome-192x192.png" className="w-12 rounded" alt="" />
             <p className="font-bold text-gray-500 text-sm">Made with <a target={'_blank'} rel={'noreferrer noopener'} className="font-normal hover:underline" href="https://openai.com/blog/dall-e-api-now-available-in-public-beta/">DALL·E API</a></p>
           </div>
           <div className="flex gap-4">
