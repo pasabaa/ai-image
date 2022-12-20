@@ -1,32 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { Configuration, OpenAIApi } from "openai"
+import { useState } from "react";
+import { InputBox } from "./components/InputBox";
+
+const configuration = new Configuration({
+  apiKey: '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',
+});
+
+const openai = new OpenAIApi(configuration);
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [userPrompt, setUserPrompt] = useState('');
+  const [number, setNumber] = useState('');
+  const [size, setSize] = useState('256x256');
+  const [imageUrl, setImageUrl] = useState('');
+
+  const generateImage = async () => {
+    const imageParams = {
+      prompt: userPrompt,
+      n: parseInt(number),
+      size: size,
+    }
+
+    const res = await openai.createImage(imageParams);
+    const urlData = res.data.data[0].url;
+    setImageUrl(urlData);
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div >
+      {imageUrl && <img src={imageUrl} alt={'image openai'} />}
+      <InputBox label={'Description'} setAttribute={setUserPrompt} />
+      <InputBox label={'Amount'} setAttribute={setNumber} />
+      <InputBox label={'Size'} setAttribute={setSize} />
+      <button onClick={generateImage}>Generate</button>
     </div>
   )
 }
