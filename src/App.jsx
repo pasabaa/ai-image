@@ -3,7 +3,7 @@ import { useState } from "react";
 import { InputBox } from "./components/InputBox";
 
 const configuration = new Configuration({
-  apiKey: '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',
+  apiKey: import.meta.env.VITE_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -16,6 +16,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState('');
 
   const generateImage = async () => {
+
     const imageParams = {
       prompt: userPrompt,
       n: parseInt(number),
@@ -23,7 +24,9 @@ function App() {
     }
 
     const res = await openai.createImage(imageParams);
+
     const urlData = res.data.data[0].url;
+    
     setImageUrl(urlData);
   }
 
