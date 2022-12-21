@@ -59,23 +59,23 @@ function App() {
       <div className="w-4/12 mx-auto sm:w-full">
 
         <div className="mb-8">
-          <h1 className="font-bold text-3xl">Genera imagenes con Inteligencia Artificial</h1>
+          <h1 className="text-3xl font-black dark:text-gray-100">Genera imagenes con Inteligencia Artificial</h1>
         </div>
 
         {loading && <div className="h-full flex flex-col gap-4 items-center justify-center animate-pulse">
           <img className="w-16" src={LoadIcon} alt="Loading Icon" />
-          <h1 className="text-sm">Cargando...</h1>
+          <h1 className="text-sm dark:text-gray-400">Cargando...</h1>
         </div>}
 
         {imageUrl && 
         <div className="flex flex-col gap-4">
           <img className="rounded w-full" src={imageUrl} alt={'image openai'} />
-          <a onClick={()=>{handleDownload(imageUrl, userPrompt)}} href={imageUrl} className="max-w-min py-2 px-3 bg-gray-50 text-zinc-500 rounded uppercase font-bold text-sm hover:bg-gray-100 transition mb-8">Descargar</a>
+          <a onClick={()=>{handleDownload(imageUrl, userPrompt)}} href={imageUrl} className="max-w-min py-2 px-3 bg-gray-50 dark:bg-zinc-900 text-gray-500 rounded uppercase font-bold text-sm hover:bg-gray-100 dark:hover:bg-zinc-800 transition mb-8">Descargar</a>
         </div>}
         
         <InputBox error={error} placeholder={'Un Samurai montando un caballo en Marte, lomografía.'} label={'Descripción'} setAttribute={setUserPrompt} description={'Una descripción de texto de la(s) imagen(es) deseada(s). La longitud máxima es de 1000 caracteres.'} />
         <SelectBox label={'Tamaño'} setAttribute={setSize} description={'El tamaño de las imágenes generadas debe ser uno de 256x256, 512x512, o 1024x1024.'} />
-        <button className="py-2 px-3 bg-gray-50 text-zinc-500 rounded uppercase font-bold text-sm hover:bg-gray-100 transition mb-8" onClick={generateImage}>Generar</button>
+        <button className="py-2 px-3 bg-gray-50 dark:bg-zinc-900 text-gray-500 rounded uppercase font-bold text-sm hover:bg-gray-100 dark:hover:bg-zinc-800 transition mb-8" onClick={generateImage}>Generar</button>
       </div>
     </div>
 
@@ -83,10 +83,10 @@ function App() {
       <div className="w-8/12 flex justify-between items-center gap-4 mx-auto sm:w-full">
         <div className="flex items-center gap-4">
           <a href="/">
-            <img src="/favicon/android-chrome-192x192.png" className="w-12 rounded" alt="AI Image Logo" />
+            <img src="/favicon/android-chrome-192x192.png" className="w-12 rounded dark:invert" alt="AI Image Logo" />
           </a>
           <a target={'_blank'} rel={'noreferrer noopener'} href="https://portfolio-pasabaa.netlify.app/">
-            <img className="w-8 filter-white" src="/logo/logo.png" alt="Logo pasabaa" />
+            <img className="w-8 filter-white dark:invert" src="/logo/logo.png" alt="Logo pasabaa" />
           </a>
         </div>
         <div>
