@@ -58,6 +58,10 @@ function App() {
     <div className="grid place-items-center h-screen p-16" >
       <div className="w-4/12 mx-auto sm:w-full">
 
+        <div className="mb-8">
+          <h1 className="font-bold text-3xl">Genera imagenes con Inteligencia Artificial</h1>
+        </div>
+
         {loading && <div className="h-full flex flex-col gap-4 items-center justify-center animate-pulse">
           <img className="w-16" src={LoadIcon} alt="Loading Icon" />
           <h1 className="text-sm">Cargando...</h1>
@@ -75,17 +79,19 @@ function App() {
       </div>
     </div>
 
-    <div className="text-gray-500 px-16 py-8 mt-auto bottom-0 flex flex-col items-start justify-start bg-gray-100/30 place-self-end">
+    <div className="text-gray-500 px-16 py-8 mt-auto bottom-0 flex flex-col items-start justify-start place-self-end">
       <div className="w-8/12 flex justify-between items-center gap-4 mx-auto sm:w-full">
-        <div>
+        <div className="flex items-center gap-4">
+          <a href="/">
+            <img src="/favicon/android-chrome-192x192.png" className="w-12 rounded" alt="AI Image Logo" />
+          </a>
           <a target={'_blank'} rel={'noreferrer noopener'} href="https://portfolio-pasabaa.netlify.app/">
             <img className="w-8 filter-white" src="/logo/logo.png" alt="Logo pasabaa" />
           </a>
         </div>
         <div>
           <div className="text-end flex flex-col items-end gap-2 mb-2">
-            <img src="/favicon/android-chrome-192x192.png" className="w-12 rounded" alt="" />
-            <p className="font-bold text-gray-500 text-sm">Made with <a target={'_blank'} rel={'noreferrer noopener'} className="font-normal hover:underline" href="https://openai.com/blog/dall-e-api-now-available-in-public-beta/">DALL·E API</a></p>
+            <p className="font-bold text-gray-500 text-sm">Hecho con <a target={'_blank'} rel={'noreferrer noopener'} className="font-normal hover:underline" href="https://openai.com/blog/dall-e-api-now-available-in-public-beta/">DALL·E API</a></p>
           </div>
           <div className="flex gap-4">
             <div className="flex gap-2 ">
