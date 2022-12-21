@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const InputBox = ({label, setAttribute, description, placeholder}) => {
+export const InputBox = ({label, setAttribute, description, placeholder, error}) => {
   return (
     <div className='flex flex-col gap-2 my-4'>
         <div className='flex flex-col leading-relaxed'>
@@ -8,6 +8,7 @@ export const InputBox = ({label, setAttribute, description, placeholder}) => {
           <p className='text-sm text-[#525766]'>{description}</p>
         </div>
         <input autoFocus placeholder={placeholder} className='border rounded py-1 px-3 text-sm text-gray-600 focus:outline-none active:outline-none' onChange={(e)=>setAttribute(e.target.value)} />
+        {error && <h1 className="text-sm text-red-600">Campo obligatorio.</h1>}
     </div>
   )
 }

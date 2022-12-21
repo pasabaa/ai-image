@@ -17,6 +17,7 @@ function App() {
   const [size, setSize] = useState('256x256');
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const generateImage = async () => {
 
@@ -26,15 +27,21 @@ function App() {
       size: size,
     }
 
-    setLoading(true);
+    if(userPrompt.trim().length !== 0) {
 
-    const res = await openai.createImage(imageParams);
-    
-    const urlData = res.data.data[0].url;
-    
-    setImageUrl(urlData);
+      setLoading(true);
+      setError(false);
+      const res = await openai.createImage(imageParams);
+      
+      const urlData = res.data.data[0].url;
+      
+      setImageUrl(urlData);
 
-    setLoading(false);
+      setLoading(false);
+
+    } else {
+      setError(true);
+    }
 
   }
 
@@ -50,6 +57,7 @@ function App() {
     <>
     <div className="grid place-items-center h-screen p-16" >
       <div className="w-4/12 mx-auto sm:w-full">
+
         {loading && <div className="h-full flex flex-col gap-4 items-center justify-center animate-pulse">
           <img className="w-16" src={LoadIcon} alt="Loading Icon" />
           <h1 className="text-sm">Cargando...</h1>
@@ -61,13 +69,13 @@ function App() {
           <a onClick={()=>{handleDownload(imageUrl, userPrompt)}} href={imageUrl} className="max-w-min py-2 px-3 bg-gray-50 text-zinc-500 rounded uppercase font-bold text-sm hover:bg-gray-100 transition mb-8">Descargar</a>
         </div>}
         
-        <InputBox placeholder={'Un Samurai montando un caballo en Marte, lomografía.'} label={'Descripción'} setAttribute={setUserPrompt} description={'Una descripción de texto de la(s) imagen(es) deseada(s). La longitud máxima es de 1000 caracteres.'} />
+        <InputBox error={error} placeholder={'Un Samurai montando un caballo en Marte, lomografía.'} label={'Descripción'} setAttribute={setUserPrompt} description={'Una descripción de texto de la(s) imagen(es) deseada(s). La longitud máxima es de 1000 caracteres.'} />
         <SelectBox label={'Tamaño'} setAttribute={setSize} description={'El tamaño de las imágenes generadas debe ser uno de 256x256, 512x512, o 1024x1024.'} />
         <button className="py-2 px-3 bg-gray-50 text-zinc-500 rounded uppercase font-bold text-sm hover:bg-gray-100 transition mb-8" onClick={generateImage}>Generar</button>
       </div>
     </div>
 
-    <div className="text-gray-500 px-16 py-8 mt-auto bottom-0 flex flex-col items-start justify-start bg-gray-100/30">
+    <div className="text-gray-500 px-16 py-8 mt-auto bottom-0 flex flex-col items-start justify-start bg-gray-100/30 place-self-end">
       <div className="w-8/12 flex justify-between items-center gap-4 mx-auto sm:w-full">
         <div>
           <a target={'_blank'} rel={'noreferrer noopener'} href="https://portfolio-pasabaa.netlify.app/">
