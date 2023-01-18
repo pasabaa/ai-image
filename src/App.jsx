@@ -59,7 +59,7 @@ function App() {
   return (
     <>
     <div className="flex flex-col items-center justify-center min-h-screen p-6">
-      <div className="w-11/12 mx-auto xl:w-8/12 lg:w-8/12 md:w-11/12">
+      <div className="w-11/12 mx-auto xl:w-8/12 lg:w-8/12 md:w-11/12 mt-16">
         <div className="grid grid-cols-1 gap-16 place-items-center min-h-full sm:grid-cols-2">
           <div>
             <h1 className="text-3xl font-black">Genera imagenes con Inteligencia Artificial</h1>
