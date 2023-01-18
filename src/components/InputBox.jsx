@@ -7,7 +7,7 @@ export const InputBox = ({label, setAttribute, description, placeholder, error})
           <label className='text-gray-600 dark:text-gray-300 uppercase' htmlFor={label}>{label}</label>
           <p className='text-sm text-[#525766] dark:text-gray-400'>{description}</p>
         </div>
-        <input autoFocus placeholder={placeholder} className='border rounded py-1 px-3 text-sm text-gray-600 dark:bg-[#0D0D0D] dark:border-zinc-900 dark:text-gray-400 focus:outline-none active:outline-none' onChange={(e)=>setAttribute(e.target.value)} />
+        <input autoFocus placeholder={placeholder} className='border rounded p-3 text-sm text-gray-600 dark:bg-[#0D0D0D] dark:border-zinc-900 dark:text-gray-400 focus:outline-none active:outline-none' onChange={(e)=>setAttribute(e.target.value)} />
         {error && <h1 className="text-sm text-red-600 dark:text-red-400">Campo obligatorio.</h1>}
     </div>
   )
@@ -36,7 +36,7 @@ export const SelectBox = ({label, setAttribute, description}) => {
           <label className='text-gray-600 dark:text-gray-300 uppercase' htmlFor={label}>{label}</label>
           <p className='text-sm text-[#525766] dark:text-gray-400'>{description}</p>
         </div>
-        <select className='border rounded py-1 px-3 text-sm text-gray-600 dark:bg-[#0D0D0D] dark:border-zinc-900 dark:text-gray-400 focus:outline-none active:outline-none' onChange={(e)=>setAttribute(e.target.value)} name={label}>
+        <select className='border rounded p-3 text-sm text-gray-600 dark:bg-[#0D0D0D] dark:border-zinc-900 dark:text-gray-400 focus:outline-none active:outline-none' onChange={(e)=>setAttribute(e.target.value)} name={label}>
           {
             options.map(option => {
               return(
